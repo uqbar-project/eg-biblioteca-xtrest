@@ -1,5 +1,6 @@
 package org.uqbar.biblioteca.controller
 
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import org.uqbar.biblioteca.model.Biblioteca
 import org.uqbar.biblioteca.model.Libro
 import org.uqbar.xtrest.api.annotation.Body
@@ -55,9 +56,14 @@ class BibliotecaController {
     @Post("/libros")
     def createLibro(@Body String body) {
         response.contentType = "application/json"
-        var Libro libro = body.fromJson(typeof(Libro))
-        this.biblioteca.setLibro(libro)
-    	ok()
+        try {
+	        var Libro libro = body.fromJson(typeof(Libro))	
+	        this.biblioteca.setLibro(libro)
+	    	ok()
+        } catch (UnrecognizedPropertyException exception) {
+        	badRequest('{ "error": "El body debe ser un Libro" }')        	
+        }
+        
     }
 
 }

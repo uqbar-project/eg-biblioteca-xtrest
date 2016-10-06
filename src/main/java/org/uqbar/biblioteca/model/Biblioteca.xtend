@@ -22,4 +22,12 @@ class Biblioteca {
 		libroById.values
 	}
 	
+	def searchLibros(String substring) {
+		if (substring == null) {
+			this.libros
+		} else {
+			this.libros.filter[ it.titulo.toLowerCase.contains(substring.toLowerCase) ].toList			
+		}
+	}
+	
 }

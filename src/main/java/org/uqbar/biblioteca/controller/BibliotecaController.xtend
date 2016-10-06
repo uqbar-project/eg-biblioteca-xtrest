@@ -20,9 +20,9 @@ class BibliotecaController {
 	}
 	
     @Get("/libros")
-    def getLibros() {
+    def getLibros(String string) {
         response.contentType = "application/json"
-        ok(this.biblioteca.getLibros.toJson)
+       	ok(this.biblioteca.searchLibros(string).toJson)
     }
 
     @Get("/libros/:id")

@@ -1,27 +1,25 @@
 package org.uqbar.biblioteca.model
 
-import java.util.HashMap
+import java.util.ArrayList
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class Biblioteca {
 	
-	var libroById = new HashMap<Integer, Libro>
+	var ArrayList<Libro> libros = new ArrayList
 		
 	def setLibro(Libro libro) {
-		libroById.put(libro.id, libro)
+		libros.add(libro)
 	}
 	
-	def getLibro(Integer id) {
-		libroById.get(id)
+	def getLibro(int id) {
+		libros.findFirst[ it.id == id ]
 	}
 
 	def eliminarLibro(Integer id) {
-		libroById.remove(id)
+		libros.remove(this.getLibro(id))
 	}
 		
-	def getLibros() {
-		libroById.values
-	}
-	
 	def searchLibros(String substring) {
 		if (substring == null) {
 			this.libros

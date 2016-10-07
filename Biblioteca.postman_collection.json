@@ -1,0 +1,137 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Biblioteca",
+		"_postman_id": "c09c7398-44b6-5048-1821-205605afea15",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Todos los libros",
+			"request": {
+				"url": "http://localhost:9000/libros",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dGluY2hvZGlhczoxMjM=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Libro 17 - OK",
+			"request": {
+				"url": "http://localhost:9000/libros/17",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Libro 42 - Not Found",
+			"request": {
+				"url": "http://localhost:9000/libros/42",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Libro XX - Bad Request",
+			"request": {
+				"url": "http://localhost:9000/libros/XX",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Libro 17",
+			"request": {
+				"url": "http://localhost:9000/libros/17",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Libro 19",
+			"request": {
+				"url": "http://localhost:9000/libros",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dGluY2hvZGlhczoxMjM=",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"id\": 19, \"titulo\": \"Fervor de Buenos Aires\" }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Libros con \"el\"",
+			"request": {
+				"url": "http://localhost:9000/libros?string=el",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dGluY2hvZGlhczoxMjM=",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"id\": 19, \"titulo\": \"Fervor de Buenos Aires\" }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

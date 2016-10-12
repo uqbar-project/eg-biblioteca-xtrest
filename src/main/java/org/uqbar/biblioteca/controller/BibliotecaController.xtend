@@ -8,6 +8,7 @@ import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.api.annotation.Delete
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Post
+import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
 
 @Controller
@@ -21,13 +22,13 @@ class BibliotecaController {
 	
     @Get("/libros")
     def getLibros(String string) {
-        response.contentType = "application/json"
+        response.contentType = ContentType.APPLICATION_JSON
        	ok(this.biblioteca.searchLibros(string).toJson)
     }
 
     @Get("/libros/:id")
     def getLibroById() {
-        response.contentType = "application/json"
+        response.contentType = ContentType.APPLICATION_JSON
         try {        	
             var libro = this.biblioteca.getLibro(Integer.valueOf(id))
             if (libro == null) {
@@ -43,7 +44,7 @@ class BibliotecaController {
 
     @Delete('/libros/:id')
     def deleteLibroById() {
-        response.contentType = "application/json"
+        response.contentType = ContentType.APPLICATION_JSON
         try {
             this.biblioteca.eliminarLibro(Integer.valueOf(id))
             ok()
@@ -55,7 +56,7 @@ class BibliotecaController {
 
     @Post("/libros")
     def createLibro(@Body String body) {
-        response.contentType = "application/json"
+        response.contentType = ContentType.APPLICATION_JSON
         try {
 	        var Libro libro = body.fromJson(typeof(Libro))	
 	        this.biblioteca.setLibro(libro)

@@ -58,7 +58,7 @@ class BibliotecaController {
     def createLibro(@Body String body) {
         response.contentType = ContentType.APPLICATION_JSON
         try {
-	        var Libro libro = body.fromJson(typeof(Libro))	
+	        var Libro libro = body.fromJson(Libro)
 	        this.biblioteca.setLibro(libro)
 	    	ok()
         } catch (UnrecognizedPropertyException exception) {

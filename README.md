@@ -37,4 +37,6 @@ Demostración de uso de [xtrest](https://github.com/uqbar-project/xtrest) sobre 
 1. Clonar este repositorio.
 2. Importar a Eclipse como **Maven project**.
 3. Ejecutar `org.uqbar.biblioteca.app.BibliotecaApp`, que levanta servidor en <http://localhost:9000>.
-4. Probar la API REST. Una forma muy fácil es instalar [Postman](https://www.getpostman.com/) e importar [este archivo](Biblioteca.postman_collection.json), el cual provee varios ejemplos de request listo para usar.
+4. Probar la API REST
+   * en el navegador: http://localhost:9000/libros;
+   * en [Postman](https://www.getpostman.com/), importar [este archivo](Biblioteca.postman_collection.json) que provee varios ejemplos de request listos para usar.

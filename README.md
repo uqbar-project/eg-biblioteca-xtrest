@@ -6,7 +6,7 @@ Demostración de uso de [xtrest](https://github.com/uqbar-project/xtrest) sobre 
 ## Implementación 
 
 | package | descripción |
-| --- |
+| --- | --- |
 | `org.uqbar.biblioteca.model`      | Modelo de dominio (Biblioteca y Libro) |
 | `org.uqbar.biblioteca.controller` | Definición Xtrest de la API REST (detalles [más abajo](#api-rest-en-ejemplos)) |
 | `org.uqbar.biblioteca.app`        | El `main` que levanta un servidor HTTP y inicializa el modelo con libros de prueba |
@@ -14,7 +14,7 @@ Demostración de uso de [xtrest](https://github.com/uqbar-project/xtrest) sobre 
 
 ## API REST en ejemplos
 
-| operación     | request                   | response code   | explicación | 
+| operación     | request                   | response        | descripción | 
 | --- | --- | --- | --- |
 | buscar libros | `GET /libros?string=Ficc` | 200 OK          | Lista de libros que contengan `ficc` (ignorando mayúsculas/minúsculas) |
 | | | | |
@@ -37,4 +37,4 @@ Demostración de uso de [xtrest](https://github.com/uqbar-project/xtrest) sobre 
 1. Clonar este repositorio.
 2. Importar a Eclipse como **Maven project**.
 3. Ejecutar `org.uqbar.biblioteca.app.BibliotecaApp`, que levanta servidor en <http://localhost:9000>.
-4. Probar la API REST. Una forma muy fácil es instalar [Postman](https://www.getpostman.com/) e importar <postman_collection.json>, el cual provee varios ejemplos de request listo para usar.
+4. Probar la API REST. Una forma muy fácil es instalar [Postman](https://www.getpostman.com/) e importar [este archivo](Biblioteca.postman_collection.json), el cual provee varios ejemplos de request listo para usar.

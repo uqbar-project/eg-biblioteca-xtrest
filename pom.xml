@@ -17,13 +17,43 @@
        <version>2.9.1</version>
    </parent>
 
-  <dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<!-- Allows to build an assembly JAR -->
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>org.uqbar.biblioteca.app.BibliotecaApp</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
+
+  <dependencies>
 	<dependency>
 		<groupId>org.uqbar</groupId>
 		<artifactId>xtrest</artifactId>
 		<version>0.1.6</version>
 	</dependency>
- 
   </dependencies>
+  
+  
 </project>

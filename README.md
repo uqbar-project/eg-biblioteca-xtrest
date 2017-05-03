@@ -50,6 +50,6 @@ Demostración de uso de [xtrest](https://github.com/uqbar-project/xtrest) sobre 
 
 ### Cómo probar
 
-Probar los ejemplos de API REST
+Probar los [ejemplos de API REST](#api-rest-en-ejemplos)
    * en el navegador: <http://localhost:9000/libros>;
    * en [Postman](https://www.getpostman.com/), importar [este archivo](Biblioteca.postman_collection.json) que provee varios ejemplos de request listos para usar.

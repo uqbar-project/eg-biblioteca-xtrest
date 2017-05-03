@@ -34,13 +34,13 @@ class BibliotecaController {
         try {        	
             var libro = this.biblioteca.getLibro(Integer.valueOf(id))
             if (libro == null) {
-            	notFound('{ "error": "No existe libro con ese id" }')
+            	notFound(getErrorJson("No existe libro con ese id"))
             } else {
             	ok(libro.toJson)
             }
         }
         catch (NumberFormatException ex) {
-        	badRequest('{ "error": "El id debe ser un numero entero" }')
+        	badRequest(getErrorJson("El id debe ser un numero entero"))
         }
     }
 
@@ -52,7 +52,7 @@ class BibliotecaController {
             ok()
         }
         catch (NumberFormatException ex) {
-        	badRequest('{ "error": "El id debe ser un numero entero" }')
+        	badRequest(getErrorJson("El id debe ser un numero entero"))
         }
     }
 
@@ -66,12 +66,17 @@ class BibliotecaController {
 				ok()	        	
 	        } 
 	        catch (UserException exception) {
-	        	badRequest('{ "error": "' + exception.message + '" }')
+	        	badRequest(getErrorJson(exception.message))
 	        }
         } 
         catch (UnrecognizedPropertyException exception) {
-        	badRequest('{ "error": "El body debe ser un Libro" }')        	
+        	badRequest(getErrorJson("El body debe ser un Libro"))
         }
+    }
+
+
+    private def getErrorJson(String message) {
+        '{ "error": "' + message + '" }'
     }
 
 }

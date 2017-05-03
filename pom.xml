@@ -53,6 +53,11 @@
 		<artifactId>xtrest</artifactId>
 		<version>0.1.6</version>
 	</dependency>
+	<dependency>
+		<groupId>org.uqbar-project</groupId>
+		<artifactId>uqbar-domain</artifactId>
+		<version>3.5.1</version>
+	</dependency>
   </dependencies>
   
   

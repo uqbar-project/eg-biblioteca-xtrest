@@ -10,16 +10,18 @@ import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Post
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
+import org.uqbar.commons.model.UserException
 
 @Controller
 class BibliotecaController {
     extension JSONUtils = new JSONUtils
+
 	Biblioteca biblioteca
-	
-	new(Biblioteca biblioteca) {
-		this.biblioteca = biblioteca
-	}
-	
+
+    new(Biblioteca biblioteca) {
+        this.biblioteca = biblioteca
+    }
+
     @Get("/libros")
     def getLibros(String string) {
         response.contentType = ContentType.APPLICATION_JSON
@@ -58,13 +60,18 @@ class BibliotecaController {
     def createLibro(@Body String body) {
         response.contentType = ContentType.APPLICATION_JSON
         try {
-	        var Libro libro = body.fromJson(Libro)
-	        this.biblioteca.setLibro(libro)
-	    	ok()
-        } catch (UnrecognizedPropertyException exception) {
+	        val Libro libro = body.fromJson(Libro)
+	        try {
+				this.biblioteca.setLibro(libro)
+				ok()	        	
+	        } 
+	        catch (UserException exception) {
+	        	badRequest('{ "error": "' + exception.message + '" }')
+	        }
+        } 
+        catch (UnrecognizedPropertyException exception) {
         	badRequest('{ "error": "El body debe ser un Libro" }')        	
         }
-        
     }
 
 }

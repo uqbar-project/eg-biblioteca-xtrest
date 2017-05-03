@@ -1,7 +1,9 @@
 package org.uqbar.biblioteca.model
 
 import java.util.ArrayList
+import org.apache.commons.lang.StringUtils
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.model.UserException
 
 @Accessors
 class Biblioteca {
@@ -9,6 +11,10 @@ class Biblioteca {
 	var ArrayList<Libro> libros = new ArrayList
 		
 	def setLibro(Libro libro) {
+		if (!libro.estaCompleto()) {
+			throw new UserException("El libro debe estar completo");
+		}
+		eliminarLibro(libro.id) // Elimina un eventual duplicado con mismo id
 		libros.add(libro)
 	}
 	
@@ -17,11 +23,11 @@ class Biblioteca {
 	}
 
 	def eliminarLibro(Integer id) {
-		libros.remove(this.getLibro(id))
+        libros.removeIf[ it.id == id ]
 	}
 		
 	def searchLibros(String substring) {
-		if (substring == null) {
+		if (StringUtils.isBlank(substring)) {
 			this.libros
 		} else {
 			this.libros.filter[ it.titulo.toLowerCase.contains(substring.toLowerCase) ].toList			

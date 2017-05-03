@@ -1,5 +1,6 @@
 package org.uqbar.biblioteca.model
 
+import org.apache.commons.lang.StringUtils
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
@@ -16,4 +17,9 @@ class Libro {
 		this.id = id
 		this.titulo = titulo
 	}
+	
+	def estaCompleto() {
+		StringUtils.isNotBlank(titulo) 
+	}
+	
 }

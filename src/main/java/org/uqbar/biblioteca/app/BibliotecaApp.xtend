@@ -1,8 +1,8 @@
 package org.uqbar.biblioteca.app
 
-import org.uqbar.biblioteca.controller.BibliotecaController
 import org.uqbar.biblioteca.model.Biblioteca
 import org.uqbar.biblioteca.model.Libro
+import org.uqbar.biblioteca.rest.BibliotecaRestAPI
 import org.uqbar.xtrest.api.XTRest
 
 class BibliotecaApp {
@@ -15,7 +15,7 @@ class BibliotecaApp {
 		biblioteca.setLibro(new Libro(13, "El informe de Brodie"))
 		biblioteca.setLibro(new Libro(17, "El libro de arena"))
 
-        XTRest.startInstance(new BibliotecaController(biblioteca), 9000)
+        XTRest.startInstance(new BibliotecaRestAPI(biblioteca), 9000)
     }
 	
 }

@@ -8,8 +8,8 @@ Demostración de uso de [xtrest](https://github.com/uqbar-project/xtrest) sobre 
 | package | descripción |
 | --- | --- |
 | `org.uqbar.biblioteca.model`      | Modelo de dominio (Biblioteca y Libro) |
-| `org.uqbar.biblioteca.controller` | Definición Xtrest de la API REST (detalles [más abajo](#api-rest-en-ejemplos)) |
-| `org.uqbar.biblioteca.app`        | El `main` que levanta un servidor HTTP y inicializa el modelo con libros de prueba |
+| `org.uqbar.biblioteca.rest`       | Definición Xtrest de la API REST (detalles [más abajo](#api-rest-en-ejemplos)) |
+| `org.uqbar.biblioteca.app`        | El `main` que levanta un servidor HTTP y inicializa un modelo con libros de prueba |
 
 
 ## API REST en ejemplos

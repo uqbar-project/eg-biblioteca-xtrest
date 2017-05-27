@@ -48,6 +48,8 @@ Demostración de uso de [xtrest](https://github.com/uqbar-project/xtrest) sobre 
 1. Generar jar con dependencias: `mvn clean compile assembly:single`
 2. Ejecutar el jar generador: `java -jar target/biblioteca-xtrest-0.0.1-SNAPSHOT-jar-with-dependencies.jar`
 
+Esta opción requiere menos recursos de sistema porque no es necesario ejecutar Eclipse.
+
 ### Cómo probar
 
 Probar los [ejemplos de API REST](#api-rest-en-ejemplos)

@@ -1,7 +1,6 @@
 package org.uqbar.biblioteca.app
 
 import org.uqbar.biblioteca.model.Biblioteca
-import org.uqbar.biblioteca.model.Libro
 import org.uqbar.biblioteca.rest.BibliotecaRestAPI
 import org.uqbar.xtrest.api.XTRest
 

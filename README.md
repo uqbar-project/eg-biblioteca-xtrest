@@ -1,5 +1,7 @@
 # RESTful Web Services Demo en XTrest
 
+[![Build Status](https://travis-ci.org/uqbar-project/eg-biblioteca-xtrest.svg?branch=master)](https://travis-ci.org/uqbar-project/eg-biblioteca-xtrest)
+
 Demostración de uso de [xtrest](https://github.com/uqbar-project/xtrest) sobre cómo declarar y probar una API REST con operaciones CRUD y búsqueda.
 
 

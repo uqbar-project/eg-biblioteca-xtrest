@@ -3,7 +3,7 @@ package org.uqbar.biblioteca.rest
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import org.uqbar.biblioteca.model.Biblioteca
 import org.uqbar.biblioteca.model.Libro
-import org.uqbar.commons.model.UserException
+import org.uqbar.commons.model.exceptions.UserException
 import org.uqbar.xtrest.api.annotation.Body
 import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.api.annotation.Delete

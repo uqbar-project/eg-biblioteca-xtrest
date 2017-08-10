@@ -19,7 +19,7 @@ import org.uqbar.xtrest.json.JSONUtils
 class BibliotecaRestAPI {
     extension JSONUtils = new JSONUtils
 
-	Biblioteca biblioteca
+    Biblioteca biblioteca
 
     new(Biblioteca biblioteca) {
         this.biblioteca = biblioteca
@@ -33,7 +33,7 @@ class BibliotecaRestAPI {
     @Get("/libros")
     def getLibros(String string) {
         response.contentType = ContentType.APPLICATION_JSON
-       	ok(this.biblioteca.searchLibros(string).toJson)
+        return ok(this.biblioteca.searchLibros(string).toJson)
     }
 
     /**
@@ -44,16 +44,15 @@ class BibliotecaRestAPI {
     @Get("/libros/:id")
     def getLibroById() {
         response.contentType = ContentType.APPLICATION_JSON
-        try {        	
+        try {
             var libro = this.biblioteca.getLibro(Integer.valueOf(id))
             if (libro == null) {
-            	notFound(getErrorJson("No existe libro con ese id"))
+                return notFound(getErrorJson("No existe libro con ese id"))
             } else {
-            	ok(libro.toJson)
+                return ok(libro.toJson)
             }
-        }
-        catch (NumberFormatException ex) {
-        	badRequest(getErrorJson("El id debe ser un numero entero"))
+        } catch (NumberFormatException exception) {
+            return badRequest(getErrorJson("El id debe ser un numero entero"))
         }
     }
 
@@ -67,10 +66,9 @@ class BibliotecaRestAPI {
         response.contentType = ContentType.APPLICATION_JSON
         try {
             this.biblioteca.eliminarLibro(Integer.valueOf(id))
-            ok()
-        }
-        catch (NumberFormatException ex) {
-        	badRequest(getErrorJson("El id debe ser un numero entero"))
+            return ok()
+        } catch (NumberFormatException exception) {
+            return badRequest(getErrorJson("El id debe ser un numero entero"))
         }
     }
 
@@ -83,20 +81,17 @@ class BibliotecaRestAPI {
     def createLibro(@Body String body) {
         response.contentType = ContentType.APPLICATION_JSON
         try {
-	        val Libro libro = body.fromJson(Libro)
-	        try {
-				this.biblioteca.setLibro(libro)
-				ok()	        	
-	        } 
-	        catch (UserException exception) {
-	        	badRequest(getErrorJson(exception.message))
-	        }
-        } 
-        catch (UnrecognizedPropertyException exception) {
-        	badRequest(getErrorJson("El body debe ser un Libro"))
+            val Libro libro = body.fromJson(Libro)
+            try {
+                this.biblioteca.setLibro(libro)
+                return ok()
+            } catch (UserException exception) {
+                return badRequest(getErrorJson(exception.message))
+            }
+        } catch (UnrecognizedPropertyException exception) {
+            return badRequest(getErrorJson("El body debe ser un Libro"))
         }
     }
-
 
     private def getErrorJson(String message) {
         '{ "error": "' + message + '" }'

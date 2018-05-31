@@ -57,3 +57,5 @@ Esta opción requiere menos recursos de sistema porque no es necesario ejecutar 
 Probar los [ejemplos de API REST](#api-rest-en-ejemplos)
    * en el navegador: <http://localhost:9000/libros>;
    * en [Postman](https://www.getpostman.com/), importar [este archivo](Biblioteca.postman_collection.json) que provee varios ejemplos de request listos para usar.
+
+Si querés ver una demo de cómo probarlo, podés chequear [este link](https://github.com/uqbar-project/eg-tareas-xtrest).

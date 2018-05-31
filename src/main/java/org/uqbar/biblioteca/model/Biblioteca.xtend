@@ -1,14 +1,14 @@
 package org.uqbar.biblioteca.model
 
 import java.util.ArrayList
+import java.util.List
 import org.apache.commons.lang.StringUtils
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.exceptions.UserException
 
 @Accessors
 class Biblioteca {
 	
-	var ArrayList<Libro> libros = new ArrayList
+	val List<Libro> libros = new ArrayList
 	
 	/**
 	 * Helper method para agregar un libro
@@ -18,9 +18,7 @@ class Biblioteca {
 	}
 	
 	def setLibro(Libro libro) {
-		if (!libro.estaCompleto()) {
-			throw new UserException("El libro debe estar completo");
-		}
+		libro.validar()
 		eliminarLibro(libro.id) // Elimina un eventual duplicado con mismo id
 		libros.add(libro)
 	}

@@ -18,7 +18,6 @@ import org.uqbar.xtrest.json.JSONUtils
 @Controller
 class BibliotecaRestAPI {
     extension JSONUtils = new JSONUtils
-
     Biblioteca biblioteca
 
     new(Biblioteca biblioteca) {
@@ -32,7 +31,6 @@ class BibliotecaRestAPI {
      */
     @Get("/libros")
     def getLibros(String string) {
-        response.contentType = ContentType.APPLICATION_JSON
         return ok(this.biblioteca.searchLibros(string).toJson)
     }
 
@@ -43,16 +41,15 @@ class BibliotecaRestAPI {
      */
     @Get("/libros/:id")
     def getLibroById() {
-        response.contentType = ContentType.APPLICATION_JSON
         try {
             var libro = this.biblioteca.getLibro(Integer.valueOf(id))
-            if (libro == null) {
-                return notFound(getErrorJson("No existe libro con ese id"))
+            if (libro === null) {
+                return notFound(getErrorJson("No existe libro con el identificador " + id))
             } else {
                 return ok(libro.toJson)
             }
         } catch (NumberFormatException exception) {
-            return badRequest(getErrorJson("El id debe ser un numero entero"))
+            return badRequest(getErrorJson("El id debe ser un número entero"))
         }
     }
 
@@ -63,12 +60,11 @@ class BibliotecaRestAPI {
      */
     @Delete('/libros/:id')
     def deleteLibroById() {
-        response.contentType = ContentType.APPLICATION_JSON
         try {
             this.biblioteca.eliminarLibro(Integer.valueOf(id))
             return ok()
         } catch (NumberFormatException exception) {
-            return badRequest(getErrorJson("El id debe ser un numero entero"))
+            return badRequest(getErrorJson("El id debe ser un número entero"))
         }
     }
 
@@ -79,7 +75,6 @@ class BibliotecaRestAPI {
      */
     @Post("/libros")
     def createLibro(@Body String body) {
-        response.contentType = ContentType.APPLICATION_JSON
         try {
             val Libro libro = body.fromJson(Libro)
             try {

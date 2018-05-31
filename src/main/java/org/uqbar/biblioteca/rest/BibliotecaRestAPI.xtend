@@ -61,8 +61,8 @@ class BibliotecaRestAPI {
     @Delete('/libros/:id')
     def deleteLibroById() {
         try {
-            this.biblioteca.eliminarLibro(Integer.valueOf(id))
-            return ok()
+            val eliminadoOk = this.biblioteca.eliminarLibro(Integer.valueOf(id))
+            return if (eliminadoOk) ok() else badRequest(getErrorJson("No existe el libro con identificador " + id))
         } catch (NumberFormatException exception) {
             return badRequest(getErrorJson("El id debe ser un número entero"))
         }

@@ -30,7 +30,7 @@ Demostración de uso de [xtrest](https://github.com/uqbar-project/xtrest) sobre 
 |                           | `POST /libros` (BODY mal) | 400 Bad Request | No pudo leerse al BODY como instancia de `org.uqbar.biblioteca.model.Libro` |
 | | | | |
 | borrar libro              | `DELETE /libros/7`        | 200 OK          | Borra el libro con id `7` |
-|                           | `DELETE /libros/88888`    | 200 OK          | No hay libro con id `88888` pero es tolerado silenciosamente |
+|                           | `DELETE /libros/88888`    | 400 Bad Request | No hay libro con id `88888` |
 |                           | `DELETE /libros/Ficc`     | 400 Bad Request | Id mal formado (`Ficc` no es un entero) |
 
 **Atención**: La implementación usa formato JSON en el BODY, tanto en request como en response.
